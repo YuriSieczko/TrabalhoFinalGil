@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Facades\UserPermissions;
 use App\Models\Ativo;
 use Illuminate\Http\Request;
 
@@ -9,12 +10,17 @@ class AtivoController extends Controller
 {
     public function index()
     {
-        $data = Ativo::all();
-        return view('ativos.index', (['ativos' => $data]));
+        $permissions = session('user_permissions');
+        $ativos = Ativo::all();
+        return view('ativos.index', compact('ativos', 'permissions'));
     }
 
     public function create(Request $request)
     {
+        if(!UserPermissions::isAuthorized('ativos.create')) {
+            abort(403);
+            }
+            
         return view('ativos.create');
     }
 
@@ -72,7 +78,7 @@ class AtivoController extends Controller
     {
         $obj = Ativo::find($id);
         $obj->delete();
-        
+
         return redirect()->route('ativos.index');
     }
 }

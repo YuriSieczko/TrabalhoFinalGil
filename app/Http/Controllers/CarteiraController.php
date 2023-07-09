@@ -10,8 +10,9 @@ class CarteiraController extends Controller
 {
     public function index()
     {
+        $permissions = session('user_permissions');
         $data = Carteira::with(['ativo'])->get();
-        return view('carteiras.index',compact(['data']));
+        return view('carteiras.index',compact('data', 'permissions'));
     }
 
     public function create(Request $request)

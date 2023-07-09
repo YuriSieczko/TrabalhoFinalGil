@@ -9,8 +9,9 @@ class EventosCorporativosController extends Controller
 {
     public function index()
     {
-        $data = EventosCorporativos::all();
-        return view('eventosCorporativos.index', (['eventosCorporativos' => $data]));
+        $permissions = session('user_permissions');
+        $eventosCorporativos = EventosCorporativos::all();
+        return view('eventosCorporativos.index', compact('permissions', 'eventosCorporativos'));
     }
 
     public function create(Request $request)

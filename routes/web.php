@@ -22,11 +22,6 @@ Route::get('/', function () {
     return view('templates.main')->with('titulo', "");
 })->name('index');
 
-
-Route::resource('ativos', 'AtivoController');
-Route::resource('carteiras', 'CarteiraController');
-Route::resource('eventosCorporativos', 'EventosCorporativosController');
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -37,4 +32,13 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+Route::resource('ativos', 'AtivoController')->middleware(['auth']);
+Route::resource('carteiras', 'CarteiraController')->middleware(['auth']);
+Route::resource('eventosCorporativos', 'EventosCorporativosController')->middleware(['auth']);
+
+Route::get('/testfacade', function () {
+    return App\Facades\UserPermissionsFacade::test();
+    });
+
+
+require __DIR__ . '/auth.php';
