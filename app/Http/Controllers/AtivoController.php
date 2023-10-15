@@ -39,7 +39,6 @@ class AtivoController extends Controller
 
         $request->validate($regras, $msgs);
 
-
         Ativo::create([
             "instituicao" => $request->instituicao,
             "tipo" => $request->tipo,
@@ -77,7 +76,7 @@ class AtivoController extends Controller
     public function destroy($id)
     {
         $obj = Ativo::find($id);
-        $obj->delete();
+        $obj->delete(); 
 
         return redirect()->route('ativos.index');
     }

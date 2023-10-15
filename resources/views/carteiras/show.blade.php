@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
@@ -13,10 +13,15 @@
     <br>
     <label>Operaçao: </label>{{$dados['operacao']}}
     <br>
-    <label>Quantidade: </label>{{$dados['quantidade']}}
-    <br>
-    <label>Valor: </label>{{$dados['valor']}}
-    <br>
     <label>Data: </label>{{$dados['data']}}
+    <br>
+    <label>Quantidade: </label>{{ $dados['quantidade'] ?? '' }}
+    <br>
+    <label>Valor: </label>{{ $dados['valor'] ?? '' }}
+    <br>
+    <label>Total: </label>{{ $dados['total'] ?? '' }}
+    <br>
+    <label>merda: </label>{{ $dados->ativo->tipo }}
+
 </body>
-</html>
+</html> -->

@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
 
+
+//confirmação de senha
 class ConfirmablePasswordController extends Controller
 {
     /**

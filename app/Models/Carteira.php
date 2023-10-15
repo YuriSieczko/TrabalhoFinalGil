@@ -12,7 +12,23 @@ class Carteira extends Model
     use SoftDeletes;
     use HasFactory;
 
-    public function ativo() {
+    // public function ativo() {
+    //     return $this->belongsTo(Ativo::class);
+    // }
+
+    public function ativo()
+    {
         return $this->belongsTo('App\Models\Ativo');
+    }
+
+
+
+    public static function boot()
+    {
+        parent::boot();
+
+        self::saving(function ($model) {
+            $model->total = $model->quantidade * $model->valor;
+        });
     }
 }

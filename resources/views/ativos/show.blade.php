@@ -7,14 +7,15 @@
     <title>Cadastro Ativo</title>
 </head>
 <body>
-    <a href="{{route('ativos.index')}}">Voltar</a>
+    <a href="{{ route('ativos.index') }}">Voltar</a>
     <br>
-    <label>ID: </label>{{$dados['id']}}
+    <label>ID: </label>{{ $dados['id'] }}
     <br>
-    <label>Instituicao: </label>{{$dados['instituicao']}}
+    <label>Instituicao: </label>{{ $dados['instituicao'] }}
     <br>
-    <label>Tipo: </label>{{$dados['tipo']}}
+    <label>Tipo: </label>{{ $dados['tipo'] }}
     <br>
-    <label>Sigla: </label>{{$dados['sigla']}}
+    <label>Sigla: </label>{{ $dados['sigla'] }}
+    
 </body>
 </html>

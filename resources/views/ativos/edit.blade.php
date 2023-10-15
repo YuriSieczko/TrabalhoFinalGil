@@ -21,16 +21,16 @@
             </div>
         </div>
         <div class="d-flex gap-3 mb-4">
-            <div>
-                <h5><span class="badge bg-secondary">Tipo de Ativo</span></h5>
-            </div>
-            <select class="form-select form-select-sm" aria-label="Default select example" name = "tipo" id="id" required>
-                <option value=""></option>
-                <option value="Acao">Ação</option>
-                <option value="fii">FII's</option>
-                <option value="ex">Exemplo</option> 
-            </select>
+        <div>
+            <h5><span class="badge bg-secondary">Tipo de Ativo</span></h5>
         </div>
+        <select class="form-select form-select-sm" aria-label="Default select example" name="tipo" id="id" required>
+            <option value=""></option>
+            <option value="Acao" {{$dados['tipo'] == 'Acao' ? 'selected' : ''}}>Ação</option>
+            <option value="fii" {{$dados['tipo'] == 'fii' ? 'selected' : ''}}>FII's</option>
+            <option value="ex" {{$dados['tipo'] == 'ex' ? 'selected' : ''}}>Exemplo</option> 
+        </select>
+    </div>
         <div class="row">
             <div class="col" >
                 <div class="form-floating mb-3">
@@ -46,6 +46,7 @@
             </div>
         </div>
     <div class="row">
+
         <div class="col">
             <a href="{{route('ativos.index')}}" class="btn btn-secondary btn-block align-content-center">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-arrow-left-square-fill" viewBox="0 0 16 16">

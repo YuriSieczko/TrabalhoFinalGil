@@ -24,6 +24,8 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+        </div>
         <div class="d-flex gap-3 mb-4">
             <div>
                 <h5><span class="badge bg-secondary">Tipo de Ativo</span></h5>
@@ -36,7 +38,7 @@
         </div>
         <div class="row">
             <div class="col" >
-                <div class="form-floating mb-3">\
+                <div class="form-floating mb-3">
                     <input 
                         type="text" 
                         class="form-control {{ $errors->has('sigla') ? 'is-invalid' : '' }}" 
@@ -52,8 +54,7 @@
                     <label for="nome">Sigla</label>
                 </div>
             </div>
-        </div>
-        
+        </div>         
         <div class="row">
             <div class="col">
                 <a href="{{route('ativos.index')}}" class="btn btn-secondary btn-block align-content-center">
@@ -69,6 +70,7 @@
                     </svg>
                 </a>
             </div>
+        </div>
         </div>
     </form>
 @endsection

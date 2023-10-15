@@ -8,11 +8,13 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Ativo extends Model
 {
-    protected $fillable = ['instituicao', 'tipo', 'sigla'];
-    use SoftDeletes;
     use HasFactory;
+    use SoftDeletes;
 
-    public function carteira() {
+    protected $fillable = ['instituicao', 'tipo', 'sigla'];
+
+    public function carteira()
+    {
         return $this->belongsToMany('App\Models\Carteira');
     }
 }

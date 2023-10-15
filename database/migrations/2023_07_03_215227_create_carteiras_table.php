@@ -17,7 +17,8 @@ class CreateCarteirasTable extends Migration
             $table->id();
             $table->string('operacao');
             $table->integer('quantidade');
-            $table->double('valor');
+            $table->decimal('valor', 10, 2);
+            $table->decimal('total', 10, 2)->default(0.00);
             $table->string('data');
             $table->unsignedBigInteger('ativo_id');
             $table->foreign('ativo_id')->references('id')->on('ativos');

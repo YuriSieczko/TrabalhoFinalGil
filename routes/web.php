@@ -35,10 +35,15 @@ Route::middleware('auth')->group(function () {
 Route::resource('ativos', 'AtivoController')->middleware(['auth']);
 Route::resource('carteiras', 'CarteiraController')->middleware(['auth']);
 Route::resource('eventosCorporativos', 'EventosCorporativosController')->middleware(['auth']);
+Route::resource('perfil', 'PerfilController')->middleware(['auth']);
 
 Route::get('/testfacade', function () {
     return App\Facades\UserPermissionsFacade::test();
-    });
+});
 
+Route::get('/logout', function () {
+    Auth::logout();
+    return redirect('/login');
+});
 
 require __DIR__ . '/auth.php';
