@@ -10,20 +10,24 @@ class EventosCorporativosController extends Controller
     public function index()
     {
         $permissions = session('user_permissions');
-        $eventosCorporativos = EventosCorporativos::all();
+        $eventosCorporativos = EventosCorporativos::where('user_id', auth()->user()->id)->get();
         return view('eventosCorporativos.index', compact('permissions', 'eventosCorporativos'));
     }
 
     public function create(Request $request)
     {
-        return view('eventosCorporativos.create');
+        $user_id = auth()->user()->id;
+        return view('eventosCorporativos.create', compact('user_id'));
     }
 
     public function store(Request $request)
     {
-        EventosCorporativos::create([
-            "tipo" => $request->tipo,
-        ]);
+
+        $eventoCorporativo = new EventosCorporativos();
+        $eventoCorporativo->user_id = auth()->user()->id; // Adicionando o id do usuário logado
+        $eventoCorporativo->tipo = $request->tipo;
+
+        $eventoCorporativo->save();
 
         return redirect()->route('eventosCorporativos.index');
     }
@@ -55,7 +59,7 @@ class EventosCorporativosController extends Controller
     {
         $obj = EventosCorporativos::find($id);
         $obj->delete();
-        
+
         return redirect()->route('eventosCorporativos.index');
     }
 }

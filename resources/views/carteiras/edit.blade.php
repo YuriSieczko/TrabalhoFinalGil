@@ -7,75 +7,26 @@
     @csrf
     @method('PUT')
          
-        <div class="row">
-            <div class="col">
-                <h2><span class="badge bg-secondary">Ativos</span></h2>
-            </div>
-            <div class="flex-grow-1">
-                <select class="form-select form-select-sm" name="ativo" id="id" required>
-                    <option value=""></option>
-                    @foreach ($ativos as $ativo)
-                        <option value="{{ $ativo->id}}" {{ $ativo->id == old('ativo') ? 'selected' : ($ativo->id == $dados['ativo']->id ? 'selected' : '') }}>{{ $ativo->sigla }}</option>
-                    @endforeach
-                </select>
-            </div>
+    <div class="form-floating mb-3">
+            <input 
+                type="text" 
+                class="form-control" 
+                name="nome" 
+                placeholder="Nome da Carteira" 
+                value="{{ $dados->nome }}" 
+                required 
+            />
+            <label for="nome">Nome da Carteira</label>
         </div>
 
-        <!-- Novos Campos -->
-
-        <div class="row mt-4">
-            <div class="col">
-                <div class="form-floating mb-3">
-                    <select class="form-select" name="operacao" required>
-                        <option value="C" {{ $dados['operacao'] == 'C' ? 'selected' : '' }}>Compra</option>
-                        <option value="V" {{ $dados['operacao'] == 'V' ? 'selected' : '' }}>Venda</option>
-                    </select>
-                    <label for="operacao">Operação</label>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col">
-                <div class="form-floating mb-3">
-                    <input 
-                        type="number" 
-                        class="form-control" 
-                        name="quantidade" 
-                        placeholder="Quantidade"
-                        value="{{$dados['quantidade']}}"
-                    />
-                    <label for="quantidade">Quantidade</label>
-                </div>
-            </div>
-            <div class="col">
-                <div class="form-floating mb-3">
-                    <input 
-                        type="number" 
-                        class="form-control" 
-                        name="valor" 
-                        placeholder="Valor"
-                        value="{{$dados['valor']}}"
-                    />
-                    <label for="valor">Valor</label>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="row">
-            <div class="col">
-                <div class="form-floating mb-3">
-                    <input 
-                        type="date" 
-                        class="form-control" 
-                        name="data" 
-                        placeholder="Data"
-                        value="{{$dados['data']}}"
-                    />
-                    <label for="data">Data</label>
-                </div>
-            </div>
+        <div class="form-floating mb-3">
+            <textarea 
+                class="form-control" 
+                name="descrição" 
+                placeholder="Descrição da Carteira" 
+                required
+            >{{ $dados->descrição }}</textarea>
+            <label for="descrição">Descrição da Carteira</label>
         </div>
     <div class="row">
         <div class="col">

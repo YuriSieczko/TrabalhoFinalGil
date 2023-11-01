@@ -1,0 +1,5 @@
+INSERT INTO `types` (`id`, `nome`, `created_at`, `updated_at`) VALUES (NULL, 'admin', NULL, NULL), (NULL, 'user', NULL, NULL);
+
+INSERT INTO `permissions` (`id`, `regra`, `permissao`, `type_id`, `created_at`, `updated_at`) VALUES (NULL, 'ativos.create', '1', '1', NULL, NULL), (NULL, 'ativos.create', '0', '2', NULL, NULL);
+
+INSERT INTO `permissions` (`id`, `regra`, `permissao`, `type_id`, `created_at`, `updated_at`) VALUES (NULL, 'ativos.edit', '1', '1', NULL, NULL), (NULL, 'ativos.edit', '0', '2', NULL, NULL);

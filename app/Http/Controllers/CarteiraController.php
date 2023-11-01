@@ -2,92 +2,52 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Ativo;
-use App\Models\Carteira;
 use Illuminate\Http\Request;
+use App\Models\Carteira;
 
 class CarteiraController extends Controller
 {
     public function index()
     {
         $permissions = session('user_permissions');
-        $data = Carteira::with(['ativo'])->get();
+        $data = Carteira::all();
         return view('carteiras.index', compact('data', 'permissions'));
     }
 
-    public function create(Request $request)
+    public function create()
     {
-        $data = Ativo::all();
-        return view('carteiras.create', (['ativos' => $data]));
+        return view('carteiras.create');
     }
 
     public function store(Request $request)
     {
+        $request->validate([
+            'nome' => 'required',
+            'descricao' => 'required',
+        ]);
 
-        $regras = [
-            'quantidade' => 'required|integer|min:1',
-            'valor' => 'required|numeric|min:0.01',
-        ];
-
-        $msgs = [
-            "min" => "O valor do campo :attribute precisa ser maior que :min caracteres!",
-            "required" => "O valor do campo precisa ser maior :attribute é obrigatório!",
-        ];
-
-        $request->validate($regras, $msgs);
-
-        $obj = new Ativo();
-        $obj = $request->ativo;
-
-        $obj_carteira = new Carteira();
-        $obj_carteira->operacao = $request->operacao;
-        $obj_carteira->quantidade = $request->quantidade;
-        $obj_carteira->valor = $request->valor;
-        $obj_carteira->total = $request->quantidade * $request->valor;
-        $obj_carteira->data = $request->data;
-        $obj_carteira->ativo()->associate($obj);
-        $obj_carteira->save();
+        Carteira::create($request->all());
 
         return redirect()->route('carteiras.index');
     }
 
-    // // public function show($id)
-    // // {
-    // //     $dados = Carteira::with('ativo')->find($id);
-    // //     return view('carteiras.show', compact('dados'));
-    // // }
-
-    // public function show($id)
-    // {
-    //     $dados = Carteira::with('ativo')->find($id);
-    //     return view('carteiras.show', compact('dados'));
-    // }
-
-
-    public function edit($id)
+    public function edit(Carteira $carteira)
     {
-        $ativos = Ativo::all();
-        $dados = Carteira::find($id);
-        return view('carteiras.edit', compact(['ativos', 'dados']));
+        $carteira = Carteira::find($carteira);
+        return view('carteiras.edit', compact('carteira'));
     }
 
-    public function update(Request $request, string $id)
+    public function update(Request $request, Carteira $carteira)
     {
-        $obj_ativo = new Ativo();
-        $obj_ativo = $request->ativos;
+        $request->validate([
+            'nome' => 'required',
+            'descricao' => 'required',
+        ]);
 
-        $obj_carteira = Carteira::find($id);
-        $obj_ativo = $obj_carteira->ativo;
+        $carteira->update($request->all());
 
-        $obj_carteira->operacao = $request->operacao;
-        $obj_carteira->quantidade = $request->quantidade;
-        $obj_carteira->valor = $request->valor;
-        $obj_carteira->total = $request->quantidade * $request->valor;
-        $obj_carteira->data = $request->data;
-        $obj_carteira->ativo()->associate($obj_ativo);
-        $obj_carteira->save();
-
-        return redirect()->route('carteiras.index');
+        return redirect()->route('carteiras.index')
+            ->with('success', 'Carteira atualizada com sucesso');
     }
 
     public function destroy($id)

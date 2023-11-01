@@ -1,12 +1,12 @@
 <!DOCTYPE html> <html lang="pt-br"> <head> <meta charset="UTF-8"> <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Define uma seção "titulo" -->
-<title>Trabalho Bimestral - @yield('titulo')</title> <!-- Bootstrap 5 / CSS -->
+<title>SGI - @yield('titulo')</title> <!-- Bootstrap 5 / CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     </head> <body>
     <nav class="navbar sticky-top navbar-expand-md navbar-dark bg-secondary"> <div class="container-fluid"> <a
-        href="{{route('perfil.index')}}" class="navbar-brand ms-sm-3" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Perfil">
+        href="{{route('dashboard')}}" class="navbar-brand ms-sm-3" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Perfil">
         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-book-fill"
         viewBox="0 0 16 16">
         <path d="M8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0
@@ -41,8 +41,9 @@
                     <ul class="dropdown-menu">
                         <li><a href="{{route('ativos.index')}}" class="dropdown-item">Ativos</a></li>
                         <li><a href="{{route('carteiras.index')}}" class="dropdown-item">Carteira</a></li>
-                        <li><a href="{{route('eventosCorporativos.index')}}" class="dropdown-item">Eventos
-                                Corporativos</a>
+                        <li><a href="{{route('eventosCorporativos.index')}}" class="dropdown-item">Eventos Corporativos</a></li>
+                        <li><a href="{{route('operacoes.index')}}" class="dropdown-item">Operaçoes</a></li>
+                                
                         </li>
                     </ul>
                 </li>

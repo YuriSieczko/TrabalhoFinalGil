@@ -1,77 +1,22 @@
-@extends('templates.main', ['titulo' => "Novo Ativo"])
+@extends('templates.main', ['titulo' => "Nova Carteira"])
 
-@section('titulo') Ativo @endsection
+@section('titulo') Carteira @endsection
 
 @section('conteudo')
     <form action="{{ route('carteiras.store') }}" method="POST">
         @csrf
-        <div class="d-flex gap-3 mb-4">
-            <div>
-                <h5><span class="badge bg-secondary">Operação</span></h5>
-            </div>
-            <select class="form-select form-select-sm" aria-label="Default select example" name="operacao" id="id" required>
-                <option value=""></option>
-                <option value="C">C</option>
-                <option value="V">V</option>
-            </select>
-        </div>
-        <div class="row">
-            <div class="col">
-                <div class="form-floating mb-3">
-                    <input type="number" class="form-control {{ $errors->has('quantidade') ? 'is-invalid' : '' }}"
-                        name="quantidade" placeholder="Quantidade" value="{{old('quantidade')}}" />
-                    @if($errors->has('quantidade'))
-                        <div class='invalid-feedback'>
-                            {{ $errors->first('quantidade') }}
-                        </div>
-                    @endif
-                    <label for="quantidade">Quantidade</label>
-                </div>
-            </div>
-            <div class="col">
-                <div class="form-floating mb-3">
-                    <input type="number" step="0.01" class="form-control {{ $errors->has('valor') ? 'is-invalid' : '' }}"
-                        name="valor" placeholder="Valor" value="{{old('valor')}}" />
-                    @if($errors->has('valor'))
-                        <div class='invalid-feedback'>
-                            {{ $errors->first('valor') }}
-                        </div>
-                    @endif
-                    <label for="valor">Valor</label>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <div class="form-floating mb-3">
-                    <input 
-                        type="date" 
-                        class="form-control" 
-                        id="data" 
-                        name="data" 
-                        placeholder="Data" 
-                        value="{{ old('data') }}" 
-                        autocomplete="off"
-                    />
-                    <label for="data">Data</label>
-                </div>
-            </div>
+
+        <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" name="nome" placeholder="Nome da Carteira" required />
+            <label for="nome">Nome da Carteira</label>
         </div>
 
-        <div class="d-flex gap-3 mb-4">
-            <div>
-                <h5><span class="badge bg-secondary">Ativo</span></h5>
-            </div>
-            <div class="flex-grow-1">
-                <select class="form-select form-select-sm" name="ativo" id="id" required>
-                    <option value=""></option>
-                    @foreach ($ativos as $ativo)
-                        <option value="{{ $ativo->id}}" {{ $ativo->id == old('ativo') ? 'selected' : '' }}>{{ $ativo->sigla }}</option>
-                    @endforeach
-                </select>
-            </div>
+        <div class="form-floating mb-3">
+            <textarea class="form-control" name="descricao" placeholder="Descrição da Carteira" required></textarea>
+            <label for="descricao">Descrição da Carteira</label>
         </div>
-
         <div class="row">
             <div class="col">
                 <a href="{{route('carteiras.index')}}" class="btn btn-secondary btn-block align-content-center">

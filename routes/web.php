@@ -36,6 +36,8 @@ Route::resource('ativos', 'AtivoController')->middleware(['auth']);
 Route::resource('carteiras', 'CarteiraController')->middleware(['auth']);
 Route::resource('eventosCorporativos', 'EventosCorporativosController')->middleware(['auth']);
 Route::resource('perfil', 'PerfilController')->middleware(['auth']);
+Route::resource('operacoes', 'OperacoesController')->middleware(['auth']);
+
 
 Route::get('/testfacade', function () {
     return App\Facades\UserPermissionsFacade::test();

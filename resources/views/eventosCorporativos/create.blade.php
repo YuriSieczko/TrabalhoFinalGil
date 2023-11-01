@@ -5,6 +5,9 @@
 @section('conteudo')
     <form action="{{ route('eventosCorporativos.store') }}" method="POST">
         @csrf
+
+        
+
         <div class="d-flex gap-3 mb-4">
             <div>
                 <h5><span class="badge bg-secondary">Tipo de Evento</span></h5>
@@ -21,6 +24,7 @@
                 <option value="Conversões">Conversões</option> 
             </select>
         </div>
+        
         <div class="row">
             <div class="col">
                 <a href="{{route('eventosCorporativos.index')}}" class="btn btn-secondary btn-block align-content-center">

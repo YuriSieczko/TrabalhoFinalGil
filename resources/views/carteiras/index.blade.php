@@ -8,9 +8,9 @@
             <x-datatable 
                 title="Carteiras" 
                 crud="carteiras" 
-                :header="['id', 'operacao', 'data', 'quantidade', 'valor', 'total', 'tipos']" 
+                :header="['id', 'nome', 'descricao']" 
                 :data="$data"
-                :acoes="[true, true, true, true, true, true, true]"
+                :acoes="[true, true, true]"
             /> 
         </div>
     </div>

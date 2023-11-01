@@ -11,4 +11,9 @@ class EventosCorporativos extends Model
     protected $fillable = ['tipo'];
     use SoftDeletes;
     use HasFactory;
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
