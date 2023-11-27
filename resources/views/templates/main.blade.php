@@ -6,7 +6,7 @@
 
     </head> <body>
     <nav class="navbar sticky-top navbar-expand-md navbar-dark bg-secondary"> <div class="container-fluid"> <a
-        href="{{route('dashboard')}}" class="navbar-brand ms-sm-3" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Perfil">
+        href="{{route('carteiras.index')}}" class="navbar-brand ms-sm-3" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Perfil">
         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-book-fill"
         viewBox="0 0 16 16">
         <path d="M8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0
@@ -43,6 +43,8 @@
                         <li><a href="{{route('carteiras.index')}}" class="dropdown-item">Carteira</a></li>
                         <li><a href="{{route('eventosCorporativos.index')}}" class="dropdown-item">Eventos Corporativos</a></li>
                         <li><a href="{{route('operacoes.index')}}" class="dropdown-item">Operaçoes</a></li>
+                        <li><a href="{{route('extrato.index')}}" class="dropdown-item">Extrato
+                        </a></li>
                                 
                         </li>
                     </ul>

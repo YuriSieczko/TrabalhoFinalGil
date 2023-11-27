@@ -1,4 +1,4 @@
-@extends('templates.main', ['titulo' => "Eixos e Áreas", 'rota' => "eventosCorporativos.create"])
+@extends('templates.main', ['titulo' => "Eventos Corporativos", 'rota' => "eventosCorporativos.create"])
 
 @section('titulo') Eixos @endsection
 
@@ -6,9 +6,9 @@
 <div class="row">
         <div class="col">
             <x-datatable 
-                title="Eixos e Áreas" 
+                title="Eventos Corporativos" 
                 crud="eventosCorporativos" 
-                :header="['id','tipo']" 
+                :header="['id','tipo', 'valor', 'ativo_id', 'data_recebida']"
                 :data="$eventosCorporativos"
                 :acoes="[true, false, true]"
             /> 

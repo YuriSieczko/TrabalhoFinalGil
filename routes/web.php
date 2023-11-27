@@ -37,6 +37,7 @@ Route::resource('carteiras', 'CarteiraController')->middleware(['auth']);
 Route::resource('eventosCorporativos', 'EventosCorporativosController')->middleware(['auth']);
 Route::resource('perfil', 'PerfilController')->middleware(['auth']);
 Route::resource('operacoes', 'OperacoesController')->middleware(['auth']);
+Route::resource('extrato', 'ExtratoController')->middleware(['auth']);
 
 
 Route::get('/testfacade', function () {

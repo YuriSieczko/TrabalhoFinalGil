@@ -1,6 +1,8 @@
 <div>
     <table class="table align-middle caption-top table-striped">
-        <caption>Tabela de <b>{{ $title }}</b></caption>
+        @if(!request()->is('extrato*'))
+            <caption>Tabela de <b>{{ $title }}</b></caption>
+        @endif
         <thead>
         <tr>
             @php $cont = false @endphp
@@ -10,7 +12,9 @@
                 @endif
             @php $cont = true @endphp
             @endforeach
-            <th scope="col">AÇÕES</th>
+            @if(!request()->is('extrato*'))
+                <th scope="col">AÇÕES</th>
+            @endif
         </tr>
         </thead>
         <tbody>
@@ -20,7 +24,9 @@
                     @foreach ($header as $hide)
                         @if($cont)     
                             @if($hide == 'tipos') 
-                                <td class="d-none d-md-table-cell">{{ strtoupper($item->ativo->tipo) }}</td>  
+                                <td class="d-none d-md-table-cell">{{ strtoupper($item->ativo->tipo) }}</td>
+                            @elseif($hide == 'ativo_id')
+                                <td class="d-none d-md-table-cell">{{ strtoupper($item->ativo->sigla) }}</td>
                             @else
                                 <td class="d-none d-md-table-cell">{{ strtoupper($item->$hide) }}</td>                    
                             @endif

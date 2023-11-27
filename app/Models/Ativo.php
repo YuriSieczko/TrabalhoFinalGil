@@ -17,4 +17,8 @@ class Ativo extends Model
     {
         return $this->belongsToMany('App\Models\Carteira');
     }
+
+    public function eventosCorporativos() {
+        return $this->hasMany(EventosCorporativos::class);
+    }
 }

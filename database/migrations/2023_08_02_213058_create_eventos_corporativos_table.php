@@ -16,6 +16,10 @@ class CreateEventosCorporativosTable extends Migration
         Schema::create('eventos_corporativos', function (Blueprint $table) {
             $table->id();
             $table->string('tipo');
+            $table->unsignedBigInteger('ativo_id');
+            $table->foreign('ativo_id')->references('id')->on('ativos');
+            $table->decimal('valor', 10, 2);
+            $table->date('data_recebida');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->softDeletes();
